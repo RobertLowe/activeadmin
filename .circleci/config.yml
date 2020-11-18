@@ -204,29 +204,40 @@ jobs:
         user: root
 
     environment:
+      BUNDLE_GEMFILE: gemfiles/rails_60/Gemfile
+
+    steps:
+      *test_app_steps
+
+  testapp61:
+    docker:
+      - image: circleci/ruby:2.7.1-node
+        user: root
+
+    environment:
       BUNDLE_GEMFILE: Gemfile
 
     steps:
       *test_app_steps
 
-  testapp60turbolinks:
+  testapp61turbolinks:
     docker:
       - image: circleci/ruby:2.7.1-node
         user: root
 
     environment:
-      BUNDLE_GEMFILE: gemfiles/rails_60_turbolinks/Gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_61_turbolinks/Gemfile
 
     steps:
       *test_app_steps
 
-  testapp60webpacker:
+  testapp61webpacker:
     docker:
       - image: circleci/ruby:2.7.1-node
         user: root
 
     environment:
-      BUNDLE_GEMFILE: gemfiles/rails_60_webpacker/Gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_61_webpacker/Gemfile
 
     steps:
       *test_app_steps
@@ -271,6 +282,17 @@ jobs:
         user: root
 
     environment:
+      BUNDLE_GEMFILE: gemfiles/rails_60/Gemfile
+
+    steps:
+      *test_steps
+
+  ruby25rails61:
+    docker:
+      - image: circleci/ruby:2.5.8-node-browsers@sha256:772449521f5bdc456b3da1226d4070c46b53868a7b7b41f4de2318f1358c8fe6
+        user: root
+
+    environment:
       BUNDLE_GEMFILE: Gemfile
 
     steps:
@@ -293,29 +315,40 @@ jobs:
         user: root
 
     environment:
+      BUNDLE_GEMFILE: gemfiles/rails_60/Gemfile
+
+    steps:
+      *test_steps
+
+  ruby26rails61:
+    docker:
+      - image: circleci/ruby:2.6.6-node-browsers@sha256:6fecbb049a4a8a561566a0dd976a617443d14346a17e6d12d83db882684273e1
+        user: root
+
+    environment:
       BUNDLE_GEMFILE: Gemfile
 
     steps:
       *test_steps
 
-  ruby26rails60turbolinks:
+  ruby26rails61turbolinks:
     docker:
       - image: circleci/ruby:2.6.6-node-browsers@sha256:6fecbb049a4a8a561566a0dd976a617443d14346a17e6d12d83db882684273e1
         user: root
 
     environment:
-      BUNDLE_GEMFILE: gemfiles/rails_60_turbolinks/Gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_61_turbolinks/Gemfile
 
     steps:
       *test_steps
 
-  ruby26rails60webpacker:
+  ruby26rails61webpacker:
     docker:
       - image: circleci/ruby:2.6.6-node-browsers@sha256:6fecbb049a4a8a561566a0dd976a617443d14346a17e6d12d83db882684273e1
         user: root
 
     environment:
-      BUNDLE_GEMFILE: gemfiles/rails_60_webpacker/Gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_61_webpacker/Gemfile
 
     steps:
       *test_steps
@@ -337,29 +370,40 @@ jobs:
         user: root
 
     environment:
+      BUNDLE_GEMFILE: gemfiles/rails_60/Gemfile
+
+    steps:
+      *test_steps
+
+  ruby27rails61:
+    docker:
+      - image: circleci/ruby:2.7.1-node-browsers@sha256:94789a1524fa16521f6397f05ff9d4569c102ae4479135ee3f78e3b4d25c1b0e
+        user: root
+
+    environment:
       BUNDLE_GEMFILE: Gemfile
 
     steps:
       *test_steps
 
-  ruby27rails60turbolinks:
+  ruby27rails61turbolinks:
     docker:
       - image: circleci/ruby:2.7.1-node-browsers@sha256:94789a1524fa16521f6397f05ff9d4569c102ae4479135ee3f78e3b4d25c1b0e
         user: root
 
     environment:
-      BUNDLE_GEMFILE: gemfiles/rails_60_turbolinks/Gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_61_turbolinks/Gemfile
 
     steps:
       *test_steps
 
-  ruby27rails60webpacker:
+  ruby27rails61webpacker:
     docker:
       - image: circleci/ruby:2.7.1-node-browsers@sha256:94789a1524fa16521f6397f05ff9d4569c102ae4479135ee3f78e3b4d25c1b0e
         user: root
 
     environment:
-      BUNDLE_GEMFILE: gemfiles/rails_60_webpacker/Gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_61_webpacker/Gemfile
 
     steps:
       *test_steps
@@ -377,6 +421,18 @@ jobs:
       *test_steps
 
   jruby92rails60:
+    docker:
+      - image: circleci/jruby:9.2.13.0-node-browsers@sha256:7c1a2e5d083dbcbfd29c48ebaff1cbd6812824747570746577566dcf4685bb02
+        user: root
+
+    environment:
+      BUNDLE_GEMFILE: gemfiles/rails_60/Gemfile
+      JRUBY_OPTS: -J-Xmx1024m --dev --debug
+
+    steps:
+      *test_steps
+
+  jruby92rails61:
     docker:
       - image: circleci/jruby:9.2.13.0-node-browsers@sha256:7c1a2e5d083dbcbfd29c48ebaff1cbd6812824747570746577566dcf4685bb02
         user: root
@@ -416,11 +472,15 @@ workflows:
           requires:
             - setup_coverage
 
-      - testapp60turbolinks:
+      - testapp61:
           requires:
             - setup_coverage
 
-      - testapp60webpacker:
+      - testapp61turbolinks:
+          requires:
+            - setup_coverage
+
+      - testapp61webpacker:
           requires:
             - setup_coverage
 
@@ -432,6 +492,10 @@ workflows:
           requires:
             - testapp60
 
+      - ruby25rails61:
+          requires:
+            - testapp61
+
       - ruby26rails52:
           requires:
             - testapp52
@@ -440,13 +504,17 @@ workflows:
           requires:
             - testapp60
 
-      - ruby26rails60turbolinks:
+      - ruby26rails61:
           requires:
-            - testapp60turbolinks
+            - testapp61
 
-      - ruby26rails60webpacker:
+      - ruby26rails61turbolinks:
           requires:
-            - testapp60webpacker
+            - testapp61turbolinks
+
+      - ruby26rails61webpacker:
+          requires:
+            - testapp61webpacker
 
       - ruby27rails52:
           requires:
@@ -456,13 +524,17 @@ workflows:
           requires:
             - testapp60
 
-      - ruby27rails60turbolinks:
+      - ruby27rails61:
           requires:
-            - testapp60turbolinks
+            - testapp61
 
-      - ruby27rails60webpacker:
+      - ruby27rails61turbolinks:
           requires:
-            - testapp60webpacker
+            - testapp61turbolinks
+
+      - ruby27rails61webpacker:
+          requires:
+            - testapp61webpacker
 
       - jruby92rails52:
           requires:
@@ -472,27 +544,36 @@ workflows:
           requires:
             - testapp60
 
+      - jruby92rails61:
+          requires:
+            - testapp61
+
       - upload_coverage:
           requires:
             - lint_and_docs
 
             - testapp52
             - testapp60
-            - testapp60turbolinks
-            - testapp60webpacker
+            - testapp61
+            - testapp61turbolinks
+            - testapp61webpacker
 
             - ruby25rails52
             - ruby25rails60
+            - ruby25rails61
 
             - ruby26rails52
             - ruby26rails60
-            - ruby26rails60turbolinks
-            - ruby26rails60webpacker
+            - ruby26rails61
+            - ruby26rails61turbolinks
+            - ruby26rails61webpacker
 
             - ruby27rails52
             - ruby27rails60
-            - ruby27rails60turbolinks
-            - ruby27rails60webpacker
+            - ruby27rails61
+            - ruby27rails61turbolinks
+            - ruby27rails61webpacker
 
             - jruby92rails52
             - jruby92rails60
+            - jruby92rails61
