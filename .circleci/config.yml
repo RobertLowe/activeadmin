@@ -161,7 +161,7 @@ version: 2.1
 jobs:
   setup_coverage:
     docker:
-      - image: circleci/ruby:2.7.1
+      - image: circleci/ruby:2.7.2
 
     steps:
       - run:
@@ -178,7 +178,7 @@ jobs:
 
   upload_coverage:
     docker:
-      - image: circleci/ruby:2.7.1
+      - image: circleci/ruby:2.7.2
         environment:
           CC_TEST_REPORTER_ID: 8d5fcf7abea6d56c625104a9d1a81140a588a7f546f4fa9de9bc6ffc8feaaf70
 
@@ -189,7 +189,7 @@ jobs:
 
   testapp52:
     docker:
-      - image: circleci/ruby:2.7.1-node
+      - image: circleci/ruby:2.7.2-node
         user: root
 
     environment:
@@ -200,7 +200,7 @@ jobs:
 
   testapp60:
     docker:
-      - image: circleci/ruby:2.7.1-node
+      - image: circleci/ruby:2.7.2-node
         user: root
 
     environment:
@@ -211,7 +211,7 @@ jobs:
 
   testapp60turbolinks:
     docker:
-      - image: circleci/ruby:2.7.1-node
+      - image: circleci/ruby:2.7.2-node
         user: root
 
     environment:
@@ -222,7 +222,7 @@ jobs:
 
   testapp60webpacker:
     docker:
-      - image: circleci/ruby:2.7.1-node
+      - image: circleci/ruby:2.7.2-node
         user: root
 
     environment:
@@ -233,7 +233,7 @@ jobs:
 
   lint_and_docs:
     docker:
-      - image: circleci/ruby:2.7.1-node
+      - image: circleci/ruby:2.7.2-node
         user: root
 
     environment:
@@ -322,7 +322,7 @@ jobs:
 
   ruby27rails52:
     docker:
-      - image: circleci/ruby:2.7.1-node-browsers@sha256:94789a1524fa16521f6397f05ff9d4569c102ae4479135ee3f78e3b4d25c1b0e
+      - image: circleci/ruby:2.7.2-node-browsers@sha256:ca383a4de481237475d09a5be4b7282e330e2d8710fa4601ccb0c0f077e50108
         user: root
 
     environment:
@@ -333,7 +333,7 @@ jobs:
 
   ruby27rails60:
     docker:
-      - image: circleci/ruby:2.7.1-node-browsers@sha256:94789a1524fa16521f6397f05ff9d4569c102ae4479135ee3f78e3b4d25c1b0e
+      - image: circleci/ruby:2.7.2-node-browsers@sha256:ca383a4de481237475d09a5be4b7282e330e2d8710fa4601ccb0c0f077e50108
         user: root
 
     environment:
@@ -344,7 +344,7 @@ jobs:
 
   ruby27rails60turbolinks:
     docker:
-      - image: circleci/ruby:2.7.1-node-browsers@sha256:94789a1524fa16521f6397f05ff9d4569c102ae4479135ee3f78e3b4d25c1b0e
+      - image: circleci/ruby:2.7.2-node-browsers@sha256:ca383a4de481237475d09a5be4b7282e330e2d8710fa4601ccb0c0f077e50108
         user: root
 
     environment:
@@ -355,7 +355,7 @@ jobs:
 
   ruby27rails60webpacker:
     docker:
-      - image: circleci/ruby:2.7.1-node-browsers@sha256:94789a1524fa16521f6397f05ff9d4569c102ae4479135ee3f78e3b4d25c1b0e
+      - image: circleci/ruby:2.7.2-node-browsers@sha256:ca383a4de481237475d09a5be4b7282e330e2d8710fa4601ccb0c0f077e50108
         user: root
 
     environment:
