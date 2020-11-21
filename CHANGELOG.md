@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Enhancements
+
+* Allow `belongs_to` with multiple optional parents. [#6115] by [@Looooong]
+
 ## 2.8.1 [☰](https://github.com/activeadmin/activeadmin/compare/v2.8.0..v2.8.1)
 
 ### Bug Fixes
@@ -607,6 +611,7 @@ Please check [0-6-stable] for previous changes.
 [#6047]: https://github.com/activeadmin/activeadmin/pull/6047
 [#6086]: https://github.com/activeadmin/activeadmin/pull/6086
 [#6099]: https://github.com/activeadmin/activeadmin/pull/6099
+<<<<<<< HEAD
 [#6124]: https://github.com/activeadmin/activeadmin/pull/6124
 [#6149]: https://github.com/activeadmin/activeadmin/pull/6149
 [#6198]: https://github.com/activeadmin/activeadmin/pull/6198
@@ -622,6 +627,9 @@ Please check [0-6-stable] for previous changes.
 [#6422]: https://github.com/activeadmin/activeadmin/pull/6422
 [#6451]: https://github.com/activeadmin/activeadmin/pull/6451
 [#6460]: https://github.com/activeadmin/activeadmin/pull/6460
+=======
+[#6115]: https://github.com/activeadmin/activeadmin/pull/6115
+>>>>>>> long/feature/221-belongs-to-multiple-optional-parents
 
 [@5t111111]: https://github.com/5t111111
 [@aarek]: https://github.com/aarek

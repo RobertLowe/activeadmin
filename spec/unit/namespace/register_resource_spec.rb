@@ -141,6 +141,17 @@ RSpec.describe ActiveAdmin::Namespace, "registering a resource" do
           expect(menu["Posts"]).to_not eq nil
         end
       end
+
+      context "with multiple optional parents" do
+        before do
+          namespace.register Post do
+            belongs_to :author, :user, optional: true
+          end
+        end
+        it "should show up in the menu" do
+          expect(menu["Posts"]).to_not eq nil
+        end
+      end
     end
   end # describe "adding to the menu"
 
